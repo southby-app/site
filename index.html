@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>southby.app — Apple-native apps, made in Swindon</title>
-  <meta name="description" content="Southby makes thoughtfully designed, Apple-native apps for iPhone and iPad, built in Swindon, UK.">
+  <meta name="description" content="Simple, private, Apple-native apps for iPhone and iPad, made by one person in Swindon.">
   <meta name="color-scheme" content="light dark">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -15,37 +15,48 @@
       <a class="brand" href="/">southby<span>.app</span></a>
       <ul>
         <li><a href="/afon/">Afon</a></li>
+        <li><a href="/concourse/">Concourse</a></li>
+        <li><a href="/settee/">Settee</a></li>
         <li><a href="/support/">Support</a></li>
-        <li><a href="/privacy/">Privacy</a></li>
       </ul>
     </div>
   </header>
 
   <main>
     <div class="wrap hero">
-      <h1>Apps that feel at home<br>on your iPhone.</h1>
+      <h1>Apps that feel at home<br class="wide"> on your iPhone.</h1>
       <p>Simple, private, Apple-native apps for iPhone and iPad, made by one person in Swindon.</p>
     </div>
 
-    <section class="alt">
+    <section class="alt" id="apps">
       <div class="wrap">
         <h2>Apps</h2>
         <p class="lead">Small apps, made carefully.</p>
-        <div class="grid">
+        <div class="grid three">
           <a class="card app" href="/afon/">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 100 100"><path d="M0 58 C 16 48, 34 48, 50 58 S 84 68, 100 58 V100 H0Z" fill="rgba(255,255,255,.35)"/><path d="M0 70 C 16 60, 34 60, 50 70 S 84 80, 100 70 V100 H0Z" fill="rgba(255,255,255,.85)"/></svg>
-            </div>
+            <span class="icon" aria-hidden="true"><img src="/assets/icons/afon.svg" alt=""></span>
             <div>
               <h3>Afon</h3>
               <p>River levels and flood warnings for the places you care about, explained in plain English.</p>
               <span class="badge">Coming soon to the App Store</span>
             </div>
           </a>
-          <div class="card muted">
-            <h3>More on the way</h3>
-            <p>Further apps built on open UK data are in development.</p>
-          </div>
+          <a class="card app" href="/concourse/">
+            <span class="icon" aria-hidden="true"><img src="/assets/icons/concourse.svg" alt=""></span>
+            <div>
+              <h3>Concourse</h3>
+              <p>Live UK train times, beautifully simple. Departures, arrivals and your regular journeys at a glance.</p>
+              <span class="badge">Coming soon to the App Store</span>
+            </div>
+          </a>
+          <a class="card app" href="/settee/">
+            <span class="icon" aria-hidden="true"><img src="/assets/icons/settee.svg" alt=""></span>
+            <div>
+              <h3>Settee</h3>
+              <p>A beautiful remote for Kodi. Browse your library, control playback and see what's on, all from the sofa.</p>
+              <span class="badge">Coming soon to the App Store</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -75,12 +86,12 @@
 
   <footer>
     <div class="wrap">
-      <span>Designed and built in Swindon, fuelled by tea · © 2026 Michael Southby</span>
+      <span class="tagline"><span>Made in Swindon, fuelled by tea</span><span class="sep"> · </span><span>© 2026 Michael Southby</span></span>
       <nav>
         <a href="/support/">Support</a>
         <a href="/privacy/">Privacy</a>
-        <a href="mailto:support@southby.app">support@southby.app</a>
       </nav>
+      <p class="legal">Apple, iPhone and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.</p>
     </div>
   </footer>
 </body>
