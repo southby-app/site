@@ -163,3 +163,39 @@ footer .legal { flex-basis: 100%; margin: 6px 0 0; font-size: 12px; line-height:
 /* Card header: icon left, status pill right, centred on the icon */
 .card-head { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .card-head .badge { margin-top: 0; }
+
+/* How it works */
+.steps { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.step { display: flex; gap: 16px; align-items: flex-start; }
+.step .num { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--accent); color: #fff; font-weight: 600; font-size: 16px; }
+.step p { color: var(--muted); margin: 0; }
+
+/* Who it's for */
+.chips { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.chips li { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 15px; }
+
+/* Roadmap */
+.road ul { margin: 14px 0 0; padding-left: 18px; }
+.road li { margin-bottom: 6px; color: var(--text); }
+.road-label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .02em; border-radius: 999px; padding: 3px 10px; }
+.road-label.now { background: color-mix(in srgb, #34c759 18%, transparent); color: #248a3d; }
+.road-label.next { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
+.road-label.later { background: color-mix(in srgb, var(--muted) 16%, transparent); color: var(--muted); }
+@media (prefers-color-scheme: dark) { .road-label.now { color: #30d158; } }
+.small { margin-top: 16px; }
+
+/* About */
+.prose .intro { font-size: 21px; line-height: 1.45; }
+.principles li { margin-bottom: 12px; }
+.more { margin-top: 28px; font-size: 17px; }
+
+/* About: numbered principles */
+.principle-list { list-style: none; counter-reset: p; padding: 0; margin: 32px 0 8px; }
+.principle-list li { counter-increment: p; position: relative; padding: 0 0 26px 56px; margin: 0; }
+.principle-list li::before {
+  content: counter(p); position: absolute; left: 0; top: 2px; width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--accent); color: #fff; font-weight: 600; font-size: 16px;
+}
+.principle-list h2 { font-size: 21px; margin: 0 0 6px; }
+.principle-list p { margin: 0; color: var(--muted); }
