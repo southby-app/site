@@ -6,10 +6,10 @@
   <title>Privacy Policy — southby.app</title>
   <meta name="description" content="How Southby's apps, Afon, Concourse and Settee, handle your personal data.">
   <meta name="color-scheme" content="light dark">
-  <link rel="stylesheet" href="/assets/style.css?v=7">
-  <link rel="icon" href="/assets/favicon.svg?v=7" type="image/svg+xml">
-  <link rel="icon" href="/assets/favicon-32.png?v=7" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=7">
+  <link rel="stylesheet" href="/assets/style.css?v=8">
+  <link rel="icon" href="/assets/favicon.svg?v=8" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32.png?v=8" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=8">
   <meta name="apple-mobile-web-app-title" content="southby.app">
 </head>
 <body>
@@ -57,7 +57,9 @@
       </ul>
 
       <h2>Afon</h2>
-      <p>To show river levels and flood warnings, Afon requests data directly from the Environment Agency's public flood-monitoring service. As with any internet request, the Environment Agency's servers will see your device's IP address. The request doesn't include your location or any identifier from Afon. The Environment Agency's own privacy notice applies to its services.</p>
+      <p>Afon gets river levels and flood warnings from the Environment Agency's public flood-monitoring service, and rain forecasts from Apple's WeatherKit service. To make this fast and reliable, these requests go through a small server I run (api.southby.app), which collects the data and passes it on.</p>
+      <p>Your iPhone only ever asks my server for information about specific river gauges, or for the full list of gauges and flood warnings for England. It never sends your location, your saved rivers or any identifier from Afon. Working out which gauges and warnings are near you happens on your device. When a rain forecast is needed, my server asks Apple about the area around a gauge, not about you.</p>
+      <p>Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days. If my server can't be reached, Afon may contact the Environment Agency's service directly instead, which will also see your IP address; the Environment Agency's own privacy notice applies to its services.</p>
 
       <h2>Concourse</h2>
       <p>To show live train times, Concourse requests information about the stations and services you look at from National Rail's data services. These requests may pass through a small server I run, which forwards them and returns the results. The request contains only the station or service you asked about, never your location or any identifier from Concourse. Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days.</p>

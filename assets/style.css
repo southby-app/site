@@ -199,3 +199,7 @@ footer .legal { flex-basis: 100%; margin: 6px 0 0; font-size: 12px; line-height:
 }
 .principle-list h2 { font-size: 21px; margin: 0 0 6px; }
 .principle-list p { margin: 0; color: var(--muted); }
+.plus { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .02em; border-radius: 999px; padding: 2px 8px; margin-left: 4px; vertical-align: 1px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); white-space: nowrap; }
+.grid.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card ul { padding-left: 18px; margin: 10px 0 0; }
+.card li { margin-bottom: 6px; }
