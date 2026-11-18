@@ -203,3 +203,17 @@ footer .legal { flex-basis: 100%; margin: 6px 0 0; font-size: 12px; line-height:
 .grid.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 .card ul { padding-left: 18px; margin: 10px 0 0; }
 .card li { margin-bottom: 6px; }
+
+/* Home: four apps, two by two */
+.grid.apps { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid.apps .card.app { flex-direction: column; gap: 16px; }
+
+/* Screenshot placeholders: iPhone-shaped, until real screenshots are ready */
+.shots { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-top: 28px; }
+.shot { margin: 0; text-align: center; }
+.shot .frame { aspect-ratio: 393 / 852; border-radius: 34px; border: 1px solid var(--line); background: var(--bg-alt);
+  display: grid; place-items: center; color: var(--muted); font-size: 14px; line-height: 1.4; }
+.shot figcaption { margin-top: 12px; font-size: 15px; font-weight: 600; }
+@media (max-width: 600px) { .shots { grid-template-columns: repeat(2, 1fr); gap: 16px; } .nav ul { gap: 10px; font-size: 12px; } }
+/* Narrow phones: Support stays in the footer, so the menu fits beside the name */
+@media (max-width: 440px) { .nav ul li:last-child { display: none; } .nav ul { gap: 12px; font-size: 13px; } }

@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy — southby.app</title>
-  <meta name="description" content="How Southby's apps, Afon, Concourse and Settee, handle your personal data.">
+  <meta name="description" content="How Southby's apps, Afon, Concourse, Settee and Lineside, handle your personal data.">
   <meta name="color-scheme" content="light dark">
-  <link rel="stylesheet" href="/assets/style.css?v=8">
-  <link rel="icon" href="/assets/favicon.svg?v=8" type="image/svg+xml">
-  <link rel="icon" href="/assets/favicon-32.png?v=8" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=8">
+  <link rel="stylesheet" href="/assets/style.css?v=9">
+  <link rel="icon" href="/assets/favicon.svg?v=9" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32.png?v=9" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=9">
   <meta name="apple-mobile-web-app-title" content="southby.app">
 </head>
 <body>
@@ -20,6 +20,7 @@
         <li><a href="/afon/">Afon</a></li>
         <li><a href="/concourse/">Concourse</a></li>
         <li><a href="/settee/">Settee</a></li>
+        <li><a href="/lineside/">Lineside</a></li>
         <li><a href="/support/">Support</a></li>
       </ul>
     </div>
@@ -28,10 +29,10 @@
   <main class="wrap">
     <article class="prose">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: 15 November 2026</p>
+      <p class="updated">Last updated: 18 November 2026</p>
 
       <div class="callout">
-        <p><strong>In short:</strong> My apps don't have accounts, adverts, analytics or tracking. I don't collect, sell or share your personal data. Anything an app needs, such as your location, saved places or Kodi address, stays on your device. The only personal data I receive is what you choose to send me by email.</p>
+        <p><strong>In short:</strong> My apps don't have accounts, adverts, analytics or tracking. I don't collect, sell or share your personal data. Anything an app needs, such as your location, saved places or Kodi address, stays on your device. The one exception is Afon's flood warning notifications, which need an Apple push code and the warning areas you want to hear about, never your location. The only personal data I receive is what you choose to send me by email.</p>
       </div>
 
       <h2>Who I am</h2>
@@ -41,8 +42,9 @@
       <h2>This policy covers</h2>
       <ul>
         <li>Afon for iPhone and iPad</li>
-        <li>Concourse for iPhone and iPad</li>
-        <li>Settee for iPhone and iPad</li>
+        <li>Concourse for iPhone</li>
+        <li>Settee for iPhone</li>
+        <li>Lineside for iPhone</li>
         <li>Any other app published by Southby that links to this policy</li>
         <li>This website, southby.app</li>
       </ul>
@@ -53,16 +55,20 @@
         <li>No advertising, analytics or third-party tracking code.</li>
         <li>Location, if you allow it, is used on your device only. It is never sent to me or stored by me. You can change this at any time in Settings → Privacy &amp; Security → Location Services.</li>
         <li>Saved items and settings are stored on your device. If you use iCloud backups, they may be included in your backup, which Apple handles under its own privacy policy. I can't access it.</li>
-        <li>Any notifications are generated on your device.</li>
+        <li>Notifications are generated on your device, except Afon's flood warning notifications, explained below.</li>
       </ul>
 
       <h2>Afon</h2>
       <p>Afon gets river levels and flood warnings from the Environment Agency's public flood-monitoring service, and rain forecasts from Apple's WeatherKit service. To make this fast and reliable, these requests go through a small server I run (api.southby.app), which collects the data and passes it on.</p>
       <p>Your iPhone only ever asks my server for information about specific river gauges, or for the full list of gauges and flood warnings for England. It never sends your location, your saved rivers or any identifier from Afon. Working out which gauges and warnings are near you happens on your device. When a rain forecast is needed, my server asks Apple about the area around a gauge, not about you.</p>
       <p>Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days. If my server can't be reached, Afon may contact the Environment Agency's service directly instead, which will also see your IP address; the Environment Agency's own privacy notice applies to its services.</p>
+      <p><strong>Flood warning notifications.</strong> If you turn these on, Afon works out on your iPhone which flood warning areas are near your places, then sends my server those area codes and an Apple push code (a "device token") so a notification can reach your iPhone through Apple's push service. Your location and saved places are never sent. The push code doesn't identify you, and I don't link it to anything else. I keep it only to send these notifications; if Afon hasn't been in touch for 60 days it's deleted automatically, and it's removed as soon as you turn notifications off. My lawful basis is your consent, which you can withdraw at any time in Afon or in iOS Settings. Apple delivers the notifications under its own privacy policy.</p>
 
       <h2>Concourse</h2>
       <p>To show live train times, Concourse requests information about the stations and services you look at from National Rail's data services. These requests may pass through a small server I run, which forwards them and returns the results. The request contains only the station or service you asked about, never your location or any identifier from Concourse. Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days.</p>
+
+      <h2>Lineside</h2>
+      <p>Lineside gets railtours and other specials from a small server I run (api.southby.app), which reads Network Rail's open timetable and live running data. Your iPhone asks it for the trains of the types you've chosen on a given day, the trains past the stations you've saved as spots, and anything you search for. These requests contain only those choices, station codes and search words, never your location or any identifier from Lineside. Working out which station on each route is nearest you happens on your device. Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days.</p>
 
       <h2>Settee</h2>
       <p>Settee communicates only with Kodi on your own local network. It needs iOS's Local Network permission to find and control Kodi, and it doesn't contact any other device or service. The address of your Kodi, and any username and password you enter for it, are stored on your device, with the password kept in the iOS Keychain. Nothing about your library, what you watch or your network is sent to me.</p>
