@@ -542,7 +542,7 @@ page("support/index.html", "Support — southby.app",
 privacy_body = """  <main class="wrap">
     <article class="prose">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: 18 November 2026</p>
+      <p class="updated">Last updated: 19 November 2026</p>
 
       <div class="callout">
         <p><strong>In short:</strong> My apps don't have accounts, adverts, analytics or tracking. I don't collect, sell or share your personal data. Anything an app needs, such as your location, saved places or Kodi address, stays on your device. The one exception is Afon's flood warning notifications, which need an Apple push code and the warning areas you want to hear about, never your location. The only personal data I receive is what you choose to send me by email.</p>
@@ -568,7 +568,7 @@ privacy_body = """  <main class="wrap">
         <li>No advertising, analytics or third-party tracking code.</li>
         <li>Location, if you allow it, is used on your device only. It is never sent to me or stored by me. You can change this at any time in Settings → Privacy &amp; Security → Location Services.</li>
         <li>Saved items and settings are stored on your device. If you use iCloud backups, they may be included in your backup, which Apple handles under its own privacy policy. I can't access it.</li>
-        <li>Notifications are generated on your device, except Afon's flood warning notifications, explained below.</li>
+        <li>Notifications are generated on your device, except Afon's flood warning notifications and Concourse's train tracking, explained below.</li>
       </ul>
 
       <h2>Afon</h2>
@@ -579,6 +579,7 @@ privacy_body = """  <main class="wrap">
 
       <h2>Concourse</h2>
       <p>To show live train times, Concourse requests information about the stations and services you look at from National Rail's data services. These requests may pass through a small server I run, which forwards them and returns the results. The request contains only the station or service you asked about, never your location or any identifier from Concourse. Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days.</p>
+      <p><strong>Tracking a train.</strong> If you choose "Track This Train", Concourse shows the train on your Lock Screen and in the Dynamic Island (a Live Activity). To keep it up to date, Concourse sends my server the train's National Rail service code, your two station codes and an Apple push code for that one Live Activity, so updates can reach your iPhone through Apple's push service. Your location is never sent, and the push code doesn't identify you. I keep these only while the train is being tracked: they're deleted when the train arrives, if it's cancelled, when you stop tracking, or after 8 hours at most. Apple delivers the updates under its own privacy policy.</p>
 
       <h2>Lineside</h2>
       <p>Lineside gets railtours and other specials from a small server I run (api.southby.app), which reads Network Rail's open timetable and live running data. Your iPhone asks it for the trains of the types you've chosen on a given day, the trains past the stations you've saved as spots, and anything you search for. These requests contain only those choices, station codes and search words, never your location or any identifier from Lineside. Working out which station on each route is nearest you happens on your device. Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days.</p>
