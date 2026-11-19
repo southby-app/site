@@ -3,7 +3,7 @@ import os
 
 # The repository root (this script lives in _build/). Run: python3 _build/build_site.py
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VERSION = 9  # bump whenever style.css or icons change, so browsers fetch the new files
+VERSION = 10  # bump whenever style.css or icons change, so browsers fetch the new files
 TAGLINE = "Made in Swindon, fuelled by tea · © 2026 Michael Southby"
 APPLE_TM = ("Apple, Apple Watch, iPad, iPhone and Siri are trademarks of Apple Inc., registered in the U.S. and other "
             "countries and regions. App Store is a service mark of Apple Inc.")
