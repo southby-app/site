@@ -568,7 +568,7 @@ privacy_body = """  <main class="wrap">
         <li>No advertising, analytics or third-party tracking code.</li>
         <li>Location, if you allow it, is used on your device only. It is never sent to me or stored by me. You can change this at any time in Settings → Privacy &amp; Security → Location Services.</li>
         <li>Saved items and settings are stored on your device. If you use iCloud backups, they may be included in your backup, which Apple handles under its own privacy policy. I can't access it.</li>
-        <li>Notifications are generated on your device, except Afon's flood warning notifications and Concourse's train tracking, explained below.</li>
+        <li>Notifications are generated on your device, except Afon's flood warning notifications, Concourse's train tracking and Lineside's spot alerts, explained below.</li>
       </ul>
 
       <h2>Afon</h2>
@@ -583,6 +583,7 @@ privacy_body = """  <main class="wrap">
 
       <h2>Lineside</h2>
       <p>Lineside gets railtours and other specials from a small server I run (api.southby.app), which reads Network Rail's open timetable and live running data. Your iPhone asks it for the trains of the types you've chosen on a given day, the trains past the stations you've saved as spots, and anything you search for. These requests contain only those choices, station codes and search words, never your location or any identifier from Lineside. Working out which station on each route is nearest you happens on your device. Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days.</p>
+      <p><strong>Spot alerts.</strong> If you turn these on, Lineside sends my server your spots' station codes, the train types you've chosen, how much warning you want and an Apple push code (a "device token"), so a notification can reach your iPhone through Apple's push service. Your location is never sent, and the push code doesn't identify you. I keep these only to send the alerts; they're deleted as soon as you turn alerts off, and automatically if Lineside hasn't been in touch for 60 days. My lawful basis is your consent, which you can withdraw at any time in Lineside or in iOS Settings. Apple delivers the notifications under its own privacy policy.</p>
 
       <h2>Settee</h2>
       <p>Settee communicates only with Kodi on your own local network. It needs iOS's Local Network permission to find and control Kodi, and it doesn't contact any other device or service. The address of your Kodi, and any username and password you enter for it, are stored on your device, with the password kept in the iOS Keychain. Nothing about your library, what you watch or your network is sent to me.</p>
