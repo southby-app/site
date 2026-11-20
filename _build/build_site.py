@@ -3,7 +3,7 @@ import os
 
 # The repository root (this script lives in _build/). Run: python3 _build/build_site.py
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VERSION = 10  # bump whenever style.css or icons change, so browsers fetch the new files
+VERSION = 11  # bump whenever style.css or icons change, so browsers fetch the new files
 TAGLINE = "Made in Swindon, fuelled by tea · © 2026 Michael Southby"
 APPLE_TM = ("Apple, Apple Watch, iPad, iPhone and Siri are trademarks of Apple Inc., registered in the U.S. and other "
             "countries and regions. App Store is a service mark of Apple Inc.")
@@ -67,6 +67,54 @@ def page(path, title, description, body, extra_footer="", app=None):
         f.write(html)
 
 
+# Where each app is: fill these in as builds go out. Empty means "Coming soon".
+#   store:          version live on the App Store, e.g. "1.0.12" (and store_url, its App Store link)
+#   testflight:     version in TestFlight, e.g. "2.0.1" (and testflight_url, the public link if there is
+#                   one; without it, "Request access" emails support)
+RELEASES = {
+    "afon":      {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
+    "concourse": {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
+    "settee":    {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
+    "lineside":  {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
+}
+
+APP_NAMES = {"afon": "Afon", "concourse": "Concourse", "settee": "Settee", "lineside": "Lineside"}
+
+
+def release_badge(app):
+    """The pill on the home page's app cards."""
+    r = RELEASES.get(app, {})
+    if r.get("store"):
+        return "On the App Store"
+    if r.get("testflight"):
+        return "In TestFlight"
+    return "Coming soon"
+
+
+def release_html(app):
+    """Under the app's name on its page: the button, then one line per release, e.g.
+         Version 1.0.12 on the App Store
+         Version 2.0.1 in TestFlight · Request access"""
+    r = RELEASES.get(app, {})
+    store, beta = r.get("store"), r.get("testflight")
+    if not store and not beta:
+        return '<span class="btn disabled">Coming soon</span>'
+    name = APP_NAMES.get(app, app)
+    beta_link = r.get("testflight_url") or f"mailto:support@southby.app?subject={name}%20TestFlight%20access"
+    beta_action = "Join the beta" if r.get("testflight_url") else "Request access"
+    lines = []
+    if store:
+        button = f'<a class="btn" href="{r.get("store_url") or "#"}">Download on the App Store</a>'
+        lines.append(f"Version {store} on the App Store")
+    else:
+        button = f'<a class="btn" href="{beta_link}">{beta_action}</a>'
+    if beta:
+        tail = f' · <a href="{beta_link}">{beta_action}</a>' if store else ""
+        lines.append(f"Version {beta} in TestFlight{tail}")
+    status = "".join(f"<span>{line}</span>" for line in lines)
+    return f'{button}\n      <p class="release">{status}</p>'
+
+
 def icon(app, size=""):
     cls = "icon lg" if size == "lg" else "icon"
     px = 120 if size == "lg" else 72
@@ -86,7 +134,7 @@ def app_card(app, name, blurb):
     return f"""          <a class="card app" href="/{app}/">
             <div class="card-head">
               {icon(app)}
-              <span class="badge">Coming soon</span>
+              <span class="badge">{release_badge(app)}</span>
             </div>
             <div>
               <h3>{name}</h3>
@@ -206,7 +254,7 @@ def app_page(app, name, tagline, lead_heading, lead, features, private_text, cal
       {icon(app, "lg")}
       <h1>{name}</h1>
       <p>{tagline}</p>
-      <span class="btn disabled">Coming soon</span>
+      {release_html(app)}
     </div>
 
     <section class="alt">
@@ -258,9 +306,9 @@ home_body = f"""  <main>
         <div class="features">
 {feature("◎", "Apple-native", "Designed to look and behave like it belongs on your iPhone, with widgets, dark mode and accessibility built in.")}
 {feature("⌂", "Private by design", "No accounts, no ads, no tracking. Your data stays on your device.")}
-{feature("✉︎", "A real person", "Southby is a one-person studio. Email support and you'll hear back from the person who built the app.")}
+{feature("✉︎", "A real person", "southby.app is a small, independent studio. Email support and you'll hear back from me, the person who built the app.")}
         </div>
-        <p class="more"><a href="/about/">More about Southby →</a></p>
+        <p class="more"><a href="/about/">More about southby.app →</a></p>
       </div>
     </section>
   </main>"""
@@ -441,10 +489,10 @@ page("lineside/index.html", "Lineside — Railtours and railway specials, live",
 # ---------------------------------------------------------------- About
 about_body = """  <main class="wrap">
     <article class="prose">
-      <h1>About Southby</h1>
-      <p class="updated">How I make apps.</p>
+      <h1>About southby.app</h1>
+      <p class="updated">Small apps, made properly.</p>
 
-      <p class="intro">Southby is a one-person app studio in Swindon. Every app I make follows the same six principles.</p>
+      <p class="intro">southby.app is a small, independent app studio in Swindon, run by me, Michael. I make Apple-native apps for everyday life in Britain: rivers, trains, railtours and the telly. Every one follows the same six principles.</p>
 
       <ol class="principle-list">
         <li>
@@ -474,11 +522,11 @@ about_body = """  <main class="wrap">
       </ol>
 
       <h2>Who's behind it</h2>
-      <p>I'm Michael. I've spent my career in IT and make apps in my own time, starting with things I wanted to use myself: <a href="/afon/">Afon</a> for river levels and flood warnings, <a href="/concourse/">Concourse</a> for live train times, <a href="/settee/">Settee</a> for controlling Kodi from the sofa, and <a href="/lineside/">Lineside</a> for railtours and railway specials.</p>
+      <p>I've spent my career in IT and make apps in my own time, starting with things I wanted to use myself: <a href="/afon/">Afon</a> for river levels and flood warnings, <a href="/concourse/">Concourse</a> for live train times, <a href="/settee/">Settee</a> for controlling Kodi from the sofa, and <a href="/lineside/">Lineside</a> for railtours and railway specials.</p>
     </article>
   </main>"""
 page("about/index.html", "About — southby.app",
-     "How Southby makes apps: Apple-native, private by design, built on open data, small and focused, fairly priced.", about_body)
+     "How southby.app makes apps: Apple-native, private by design, built on open data, small and focused, fairly priced.", about_body)
 
 # ---------------------------------------------------------------- Support
 def qa(q, a):
@@ -494,7 +542,7 @@ support_body = f"""  <main class="wrap">
 
       <div class="callout">
         <p><strong>Email:</strong> <a href="mailto:support@southby.app">support@southby.app</a><br>
-        Southby is a one-person studio, so I usually reply within a couple of working days. Please mention which app you're using, your device and your iOS version.</p>
+        southby.app is just me, so I usually reply within a couple of working days. Please mention which app you're using, your device and your iOS version.</p>
       </div>
 
       <h2>Afon</h2>
@@ -558,7 +606,7 @@ privacy_body = """  <main class="wrap">
         <li>Concourse for iPhone</li>
         <li>Settee for iPhone</li>
         <li>Lineside for iPhone</li>
-        <li>Any other app published by Southby that links to this policy</li>
+        <li>Any other app published by southby.app that links to this policy</li>
         <li>This website, southby.app</li>
       </ul>
 
@@ -616,7 +664,7 @@ privacy_body = """  <main class="wrap">
     </article>
   </main>"""
 page("privacy/index.html", "Privacy Policy — southby.app",
-     "How Southby's apps, Afon, Concourse, Settee and Lineside, handle your personal data.", privacy_body)
+     "How southby.app's apps, Afon, Concourse, Settee and Lineside, handle your personal data.", privacy_body)
 
 # ---------------------------------------------------------------- 404
 page("404.html", "Page not found — southby.app", "Page not found.",

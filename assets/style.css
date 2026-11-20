@@ -113,6 +113,9 @@ h3 { font-size: 19px; margin: 0 0 6px; letter-spacing: -0.01em; }
 }
 .btn:hover { text-decoration: none; filter: brightness(1.08); }
 .btn.disabled { background: var(--line); color: var(--muted); cursor: default; filter: none; }
+/* Release status under an app's button: one line per release */
+.release { margin: 14px 0 0; font-size: 15px; color: var(--muted); }
+.release span { display: block; }
 
 /* Prose (policy / support) */
 .prose { max-width: 720px; margin: 0 auto; padding: 64px 0 80px; }
