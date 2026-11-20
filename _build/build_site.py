@@ -1,9 +1,10 @@
 """Generates every page of southby.app from one template so headers and footers stay identical."""
 import os
+import feature_icons
 
 # The repository root (this script lives in _build/). Run: python3 _build/build_site.py
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VERSION = 12  # bump whenever style.css or icons change, so browsers fetch the new files
+VERSION = 13  # bump whenever style.css or icons change, so browsers fetch the new files
 TAGLINE = "Made in Swindon, fuelled by tea · © 2026 Michael Southby"
 APPLE_TM = ("Apple, Apple Watch, iPad, iPhone and Siri are trademarks of Apple Inc., registered in the U.S. and other "
             "countries and regions. App Store is a service mark of Apple Inc.")
@@ -124,9 +125,15 @@ def icon(app, size=""):
             f'<img src="/assets/icons/{app}.svg?v={VERSION}" alt="" width="{px}" height="{px}"></span>')
 
 
-def feature(glyph, heading, text):
+_icon_ids = [0]
+
+
+def feature(icon_name, heading, text, app="studio"):
+    """A feature with its icon, drawn like the app icons (see feature_icons.py)."""
+    _icon_ids[0] += 1
+    art = feature_icons.svg(icon_name, app, f"fi{_icon_ids[0]}")
     return f"""          <div class="feature">
-            <div class="glyph" aria-hidden="true">{glyph}</div>
+            <div class="glyph">{art}</div>
             <h3>{heading}</h3>
             <p>{text}</p>
           </div>"""
@@ -250,7 +257,7 @@ def shots_html(labels):
 
 
 def app_page(app, name, tagline, lead_heading, lead, features, private_text, callout, extra="", shots=()):
-    feats = "\n".join(feature(*f) for f in features)
+    feats = "\n".join(feature(*f, app=app) for f in features)
     return f"""  <main>
     <div class="wrap hero">
       {icon(app, "lg")}
@@ -307,9 +314,9 @@ home_body = f"""  <main>
     <section>
       <div class="wrap">
         <div class="features">
-{feature("◎", "Apple-native", "Designed to look and behave like it belongs on your iPhone, with widgets, dark mode and accessibility built in.")}
-{feature("⌂", "Private by design", "No accounts, no ads, no tracking. Your data stays on your device.")}
-{feature("✉︎", "A real person", "southby.app is a small, independent studio. Email support and you'll hear back from me, the person who built the app.")}
+{feature("phone", "Apple-native", "Designed to look and behave like it belongs on your iPhone, with widgets, dark mode and accessibility built in.")}
+{feature("lock", "Private by design", "No accounts, no ads, no tracking. Your data stays on your device.")}
+{feature("mail", "A real person", "southby.app is a small, independent studio. Email support and you'll hear back from me, the person who built the app.")}
         </div>
         <p class="more"><a href="/about/">More about southby.app →</a></p>
       </div>
@@ -325,17 +332,17 @@ afon_body = app_page(
     "Know what your river is doing.",
     "Live data from the Environment Agency, presented the way it should be.",
     [
-        ("⚠︎", "Flood warnings", "Current flood alerts and warnings near you and at your saved places, ordered by severity."),
-        ("✦", "Flood warning notifications", "A notification when the Environment Agency issues, changes or lifts a warning near your places. Free, always."),
-        ("≈", "River levels", "Readings from monitoring stations across England, with a simple chart of the last few days."),
-        ("¶", "Plain English", "No jargon. Afon tells you whether a river is low, normal, high or rising, and what that means."),
-        ("◉", "Map", "A full-screen map of gauges and warning areas, with each warning's outline, centred on where you are."),
-        ("▥", "How full", "See at a glance how high a river is compared with its usual range, not just a number in metres."),
-        ("★", "Saved places", "Keep the rivers you care about one tap away: home, the allotment, the fishing spot."),
-        ("☂", "Rain forecast", "How much rain is on the way at each gauge over the next 48 hours, from Apple Weather."),
-        ("↔", "Along the river", "See the other gauges on the same river, so you know what's coming downstream."),
-        ("◌", "Honest about gaps", "If a gauge stops reporting, Afon says so, with the time of its last reading."),
-        ("▢", "Widget", "See your river at a glance on the Home Screen without opening the app."),
+        ("warning", "Flood warnings", "Current flood alerts and warnings near you and at your saved places, ordered by severity."),
+        ("bell", "Flood warning notifications", "A notification when the Environment Agency issues, changes or lifts a warning near your places. Free, always."),
+        ("levels", "River levels", "Readings from monitoring stations across England, with a simple chart of the last few days."),
+        ("plain", "Plain English", "No jargon. Afon tells you whether a river is low, normal, high or rising, and what that means."),
+        ("map", "Map", "A full-screen map of gauges and warning areas, with each warning's outline, centred on where you are."),
+        ("full", "How full", "See at a glance how high a river is compared with its usual range, not just a number in metres."),
+        ("saved", "Saved places", "Keep the rivers you care about one tap away: home, the allotment, the fishing spot."),
+        ("rain", "Rain forecast", "How much rain is on the way at each gauge over the next 48 hours, from Apple Weather."),
+        ("along", "Along the river", "See the other gauges on the same river, so you know what's coming downstream."),
+        ("gaps", "Honest about gaps", "If a gauge stops reporting, Afon says so, with the time of its last reading."),
+        ("widget", "Widget", "See your river at a glance on the Home Screen without opening the app."),
     ],
     "Afon has no account, no ads and no tracking. Your location and saved places stay on your device. Flood warning notifications only need the codes of the warning areas near your places, never where you are.",
     "<strong>Afon is not an official warning service.</strong> Always follow official advice. Check "
@@ -374,14 +381,14 @@ concourse_body = app_page(
     "Every train, at a glance.",
     "Live information for every National Rail station, without the clutter.",
     [
-        ("⇄", "Live departures and arrivals", "Real-time boards for every National Rail station, with platforms and expected times."),
-        ("◎", "Your nearest station, live", "Open the app and the next trains from the station nearest you are already there."),
-        ("→", "Where are you going?", "Pick a destination and see only the trains that get you there."),
-        ("★", "Stations and journeys", "Save your stations and regular journeys, so the trains you care about come first."),
-        ("⋮", "Every stop, explained", "Live times, platforms, where the train is now, whether it's catching up, and where it divides."),
-        ("ⓘ", "Station information", "Facilities, step-free access and help points for every station, one tap away."),
-        ("↺", "Earlier trains", "Trains from the last hour too, so you can check whether someone's train left on time."),
-        ("⌕", "Search", "Find any station by name or code, with your recent and nearby stations ready."),
+        ("board", "Live departures and arrivals", "Real-time boards for every National Rail station, with platforms and expected times."),
+        ("near", "Your nearest station, live", "Open the app and the next trains from the station nearest you are already there."),
+        ("destination", "Where are you going?", "Pick a destination and see only the trains that get you there."),
+        ("saved", "Stations and journeys", "Save your stations and regular journeys, so the trains you care about come first."),
+        ("stops", "Every stop, explained", "Live times, platforms, where the train is now, whether it's catching up, and where it divides."),
+        ("info", "Station information", "Facilities, step-free access and help points for every station, one tap away."),
+        ("earlier", "Earlier trains", "Trains from the last hour too, so you can check whether someone's train left on time."),
+        ("search", "Search", "Find any station by name or code, with your recent and nearby stations ready."),
     ],
     "Concourse has no account, no ads and no tracking. Your location and favourites stay on your device.",
     "Concourse is an independent app and isn't affiliated with National Rail or any train operator. "
@@ -414,14 +421,14 @@ settee_body = app_page(
     "The remote Kodi deserves.",
     "Everything you need to run Kodi from the sofa, designed for iPhone.",
     [
-        ("◎", "Finds Kodi for you", "Settee spots Kodi on your home network automatically. No IP addresses to type, nothing extra to install."),
-        ("◉", "Touch remote", "Swipe and tap, or switch to an Apple-style direction pad, with play, pause, seek and volume always to hand."),
-        ("⌨︎", "Type from your phone", "Search boxes and logins on the TV, typed with your iPhone's keyboard."),
-        ("▶︎", "Now playing", "Artwork, progress, a smooth scrubber and volume for whatever's on."),
-        ("▤", "Your library", "Browse your films, TV shows and music, search across all of it, and tap to play."),
-        ("↻", "Pick up where you left off", "Continue Watching and Up Next, with Resume or Start Over on anything you've started."),
-        ("✓", "Watched and unwatched", "Mark things watched, even if you saw them somewhere else."),
-        ("⟳", "Keep the library tidy", "Update or clean Kodi's library from your phone, with a quiet note when it's done."),
+        ("finds", "Finds Kodi for you", "Settee spots Kodi on your home network automatically. No IP addresses to type, nothing extra to install."),
+        ("touch", "Touch remote", "Swipe and tap, or switch to an Apple-style direction pad, with play, pause, seek and volume always to hand."),
+        ("type", "Type from your phone", "Search boxes and logins on the TV, typed with your iPhone's keyboard."),
+        ("play", "Now playing", "Artwork, progress, a smooth scrubber and volume for whatever's on."),
+        ("library", "Your library", "Browse your films, TV shows and music, search across all of it, and tap to play."),
+        ("resume", "Pick up where you left off", "Continue Watching and Up Next, with Resume or Start Over on anything you've started."),
+        ("watched", "Watched and unwatched", "Mark things watched, even if you saw them somewhere else."),
+        ("tidy", "Keep the library tidy", "Update or clean Kodi's library from your phone, with a quiet note when it's done."),
     ],
     "Settee talks only to Kodi on your own network. Nothing is sent to me, and there's no account, no ads and no tracking.",
     "Settee is an independent app and isn't affiliated with or endorsed by the Kodi project or the XBMC Foundation. "
@@ -453,16 +460,16 @@ lineside_body = app_page(
     "Know what's coming down the line.",
     "The trains you won't find on a departure board, from Network Rail's own timetable and live running.",
     [
-        ("◷", "Today's specials", "Railtours, empty coaches, light engines, test trains and freight specials running today, in time order."),
-        ("◐", "Choose your trains", "Railtours and moves to start. Add test trains and freight specials with one tap."),
-        ("●", "Live running", "Once a train is on its way, see where it was last reported and how early or late it's running."),
-        ("◎", "Nearest to you", "For each train, the station on its route closest to you, worked out on your iPhone."),
-        ("⌖", "Spots", "Save the stations you watch from and see everything due past them today."),
-        ("▦", "Coming up", "Everything planned for the next seven days, day by day."),
-        ("⌕", "Search", "Find a train by headcode, place or operator."),
-        ("✦", "Late-notice trains", "Specials planned at short notice appear as soon as Network Rail publishes them."),
-        ("⌇", "Map of the route", "Each train's route drawn along the real tracks, with a pin where it was last reported."),
-        ("◌", "Honest times", "Times exactly as planned and reported, never guessed. If something isn't in the data, Lineside says so."),
+        ("today", "Today's specials", "Railtours, empty coaches, light engines, test trains and freight specials running today, in time order."),
+        ("choose", "Choose your trains", "Railtours and moves to start. Add test trains and freight specials with one tap."),
+        ("live", "Live running", "Once a train is on its way, see where it was last reported and how early or late it's running."),
+        ("near", "Nearest to you", "For each train, the station on its route closest to you, worked out on your iPhone."),
+        ("spots", "Spots", "Save the stations you watch from and see everything due past them today."),
+        ("coming", "Coming up", "Everything planned for the next seven days, day by day."),
+        ("search", "Search", "Find a train by headcode, place or operator."),
+        ("late", "Late-notice trains", "Specials planned at short notice appear as soon as Network Rail publishes them."),
+        ("route", "Map of the route", "Each train's route drawn along the real tracks, with a pin where it was last reported."),
+        ("honest", "Honest times", "Times exactly as planned and reported, never guessed. If something isn't in the data, Lineside says so."),
     ],
     "Lineside has no account, no ads and no tracking. Your location and spots stay on your device, and the nearest station on each route is worked out there too.",
     "<strong>Stay safe and legal.</strong> Watch from stations, public footpaths and bridges, and never go onto the railway. "
@@ -495,12 +502,12 @@ kerbside_body = app_page(
     "Every bus in England, in one calm app.",
     "Kerbside is in development. It will use the Bus Open Data Service, the government's open data for every local bus in England: timetables, and where each bus actually is.",
     [
-        ("⌖", "Stops near you", "The stops around you and what's due at each, worked out on your iPhone."),
-        ("●", "Where your bus really is", "Its last reported position on the map, from the bus itself. Never a guessed countdown."),
-        ("◷", "Timetables", "Every route's timetable, by stop, for today and the days ahead."),
-        ("☆", "Your stops and routes", "Save the stops and journeys you use, ready when you open the app."),
-        ("⌕", "Search", "Find a stop, a route number or a place."),
-        ("◌", "Honest times", "Planned times from the timetable, live positions as reported. If something isn't in the data, Kerbside says so."),
+        ("stop", "Stops near you", "The stops around you and what's due at each, worked out on your iPhone."),
+        ("bus", "Where your bus really is", "Its last reported position on the map, from the bus itself. Never a guessed countdown."),
+        ("today", "Timetables", "Every route's timetable, by stop, for today and the days ahead."),
+        ("saved", "Your stops and routes", "Save the stops and journeys you use, ready when you open the app."),
+        ("search", "Search", "Find a stop, a route number or a place."),
+        ("honest", "Honest times", "Planned times from the timetable, live positions as reported. If something isn't in the data, Kerbside says so."),
     ],
     "Kerbside will have no account, no ads and no tracking. Your location and saved stops stay on your device.",
     "<strong>Coming soon.</strong> Kerbside is the next southby.app app. Email <a href=\"mailto:support@southby.app?subject=Kerbside\">support@southby.app</a> if you'd like to hear when it's ready to try.",
