@@ -4,7 +4,7 @@ import feature_icons
 
 # The repository root (this script lives in _build/). Run: python3 _build/build_site.py
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VERSION = 14  # bump whenever style.css or icons change, so browsers fetch the new files
+VERSION = 15  # bump whenever style.css or icons change, so browsers fetch the new files
 TAGLINE = "Made in Swindon, fuelled by tea · © 2026 Michael Southby"
 ICON_CREDIT = 'Feature icons based on <a href="https://lucide.dev">Lucide</a> (ISC licence). '
 
@@ -44,6 +44,7 @@ def page(path, title, description, body, extra_footer="", app=None):
         <li><a href="/settee/">Settee</a></li>
         <li><a href="/lineside/">Lineside</a></li>
         <li class="soon"><a href="/kerbside/">Kerbside</a></li>
+        <li class="soon"><a href="/interchange/">Interchange</a></li>
         <li><a href="/support/">Support</a></li>
       </ul>
     </div>
@@ -81,9 +82,10 @@ RELEASES = {
     "settee":    {"store": None, "store_url": None, "testflight": "1.2.0", "testflight_url": None},
     "lineside":  {"store": None, "store_url": None, "testflight": "1.1.0", "testflight_url": None},
     "kerbside":  {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
+    "interchange": {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
 }
 
-APP_NAMES = {"afon": "Afon", "concourse": "Concourse", "settee": "Settee", "lineside": "Lineside", "kerbside": "Kerbside"}
+APP_NAMES = {"afon": "Afon", "concourse": "Concourse", "settee": "Settee", "lineside": "Lineside", "kerbside": "Kerbside", "interchange": "Interchange"}
 
 
 def release_badge(app):
@@ -309,6 +311,7 @@ home_body = f"""  <main>
 {app_card("settee", "Settee", "A beautiful remote for Kodi. Browse your library, pick up where you left off and control playback, all from the sofa.")}
 {app_card("lineside", "Lineside", "Railtours, light engines and railway specials, live. Know what's running today and when it's coming past.")}
 {app_card("kerbside", "Kerbside", "Bus times with where your bus really is. Starting in Swindon, then the rest of England.")}
+{app_card("interchange", "Interchange", "London's Tube, trains and buses, live, with step-free first. Concourse's companion for London.")}
         </div>
       </div>
     </section>
@@ -532,6 +535,37 @@ page("kerbside/index.html", "Kerbside — Bus times, done properly",
      "Kerbside: bus times with where your bus really is. Testing in Swindon now, coming soon from southby.app.",
      kerbside_body, "Will contain public sector information from the Bus Open Data Service, licensed under the Open Government Licence v3.0. ",
      app="kerbside")
+
+# ---------------------------------------------------------------- Interchange (in development)
+interchange_body = app_page(
+    "interchange", "Interchange",
+    "London, live, with step-free first.",
+    "Get around London, step-free if you need it.",
+    "Interchange uses Transport for London's own open data: live trains and buses, line status in TfL's words, and every lift and platform as TfL records them. It's Concourse's companion for London.",
+    [
+        ("near", "Nearby", "The station nearest you with its next trains, then the stations and bus stops around you."),
+        ("tube", "Live trains", "TfL's own predictions at every station, by line and direction."),
+        ("stepfree", "Step-free first", "Lifts, and how you board at each platform: level access, ramps, and the step and gap where TfL has measured them. Turn on Step-free First to see them before the trains."),
+        ("warning", "Lifts out", "Every lift out of service across the network, in TfL's own words."),
+        ("bus", "Buses instead", "When a lift is out, the bus stops near the station and their next buses, as a step-free way on."),
+        ("live", "Every line", "Each line's status in TfL's own words, and its stops, with lifts that are out marked."),
+        ("stop", "London buses", "Every bus stop, with its next buses, and where each bus goes next."),
+        ("bell", "Alerts", "When one of your lines starts or stops having problems, and when a lift at one of your saved stations goes out or comes back."),
+        ("search", "Search", "Find a station, a line, a bus stop, or a place and the stations nearest it."),
+        ("route", "Works with Concourse", "At stations with National Rail trains, open Concourse for the departures."),
+        ("honest", "Honest information", "Shown exactly as TfL publishes it. Where TfL hasn't recorded something, Interchange doesn't guess."),
+    ],
+    "Interchange will have no account, no ads and no tracking. The stations and stops near you are worked out on your iPhone, so your location never leaves it.",
+    "<strong>Coming soon.</strong> Interchange is being built now. Email <a href=\"mailto:support@southby.app?subject=Interchange\">support@southby.app</a> if you'd like to hear when it's ready to try. "
+    "Interchange is an independent app and isn't affiliated with Transport for London.",
+    extra=audience_html("Made for getting around London.", [
+        "Wheelchair users", "Parents with buggies", "Anyone with heavy luggage", "Commuters",
+        "Visitors to London", "Concourse users heading into London"]),
+)
+page("interchange/index.html", "Interchange — London, live, with step-free first",
+     "Interchange: London's Tube, trains and buses, live, with step-free information first. Coming soon from southby.app.",
+     interchange_body, "Powered by TfL Open Data. Contains OS data © Crown copyright and database rights. Interchange is not affiliated with Transport for London. ",
+     app="interchange")
 
 # ---------------------------------------------------------------- About
 about_body = """  <main class="wrap">

@@ -92,12 +92,17 @@ GLYPHS = {
     'phone': '<rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" />',
     # lock
     'lock': '<rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" />',
+    # accessibility
+    'stepfree': '<circle cx="16" cy="4" r="1" /> <path d="m18 19 1-7-6 1" /> <path d="m5 8 3-3 5.5 3-2.36 3.5" /> <path d="M4.24 14.5a5 5 0 0 0 6.88 6" /> <path d="M13.76 17.5a5 5 0 0 0-6.88-6" />',
+    # train-front-tunnel
+    'tube': '<path d="M2 22V12a10 10 0 1 1 20 0v10" /> <path d="M15 6.8v1.4a3 2.8 0 1 1-6 0V6.8" /> <path d="M10 15h.01" /> <path d="M14 15h.01" /> <path d="M10 19a4 4 0 0 1-4-4v-3a6 6 0 1 1 12 0v3a4 4 0 0 1-4 4Z" /> <path d="m9 19-2 3" /> <path d="m15 19 2 3" />',
     # mail
     'mail': '<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" />',
 }
 
 APPS = {"afon": ("#2aa7ff", "#0057d9"), "concourse": ("#ffc94d", "#f08c00"), "settee": ("#ff8a65", "#d63a2f"),
-        "lineside": ("#6d5dfc", "#2a1d73"), "kerbside": ("#3ddc84", "#0a7a45"), "studio": ("#2aa7ff", "#0057d9")}
+        "lineside": ("#6d5dfc", "#2a1d73"), "kerbside": ("#3ddc84", "#0a7a45"),
+        "interchange": ("#ffc94d", "#f08c00"), "studio": ("#2aa7ff", "#0057d9")}
 
 # The two layers, in a 100 x 100 tile. Behind: 4.2 times size, offset to the bottom right, 28% white.
 # In front: 2.5 times size (60 of 100), centred, solid white.
