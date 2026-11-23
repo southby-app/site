@@ -218,7 +218,7 @@ def pricing_html():
             <h3>Afon</h3>
             <p class="small">Free</p>
             <ul>
-              <li>Every river gauge in England</li>
+              <li>Every river gauge in England and Wales</li>
               <li>Flood warnings, with notifications</li>
               <li>24-hour and 7-day charts</li>
               <li>Rain forecast</li>
@@ -335,11 +335,11 @@ afon_body = app_page(
     "afon", "Afon",
     "River levels and flood warnings for the places you care about, explained in plain English.",
     "Know what your river is doing.",
-    "Live data from the Environment Agency, presented the way it should be.",
+    "Live data from the Environment Agency and Natural Resources Wales, presented the way it should be.",
     [
         ("warning", "Flood warnings", "Current flood alerts and warnings near you and at your saved places, ordered by severity."),
-        ("bell", "Flood warning notifications", "A notification when the Environment Agency issues, changes or lifts a warning near your places. Free, always."),
-        ("levels", "River levels", "Readings from monitoring stations across England, with a simple chart of the last few days."),
+        ("bell", "Flood warning notifications", "A notification when the Environment Agency or Natural Resources Wales issues, changes or lifts a warning near your places. Free, always."),
+        ("levels", "River levels", "Readings from monitoring stations across England and Wales, with a simple chart of the last few days."),
         ("plain", "Plain English", "No jargon. Afon tells you whether a river is low, normal, high or rising, and what that means."),
         ("map", "Map", "A full-screen map of gauges and warning areas, with each warning's outline, centred on where you are."),
         ("full", "How full", "See at a glance how high a river is compared with its usual range, not just a number in metres."),
@@ -351,11 +351,12 @@ afon_body = app_page(
     ],
     "Afon has no account, no ads and no tracking. Your location and saved places stay on your device. Flood warning notifications only need the codes of the warning areas near your places, never where you are.",
     "<strong>Afon is not an official warning service.</strong> Always follow official advice. Check "
-    '<a href="https://check-for-flooding.service.gov.uk/">GOV.UK Check for flooding</a> or call Floodline on '
+    '<a href="https://check-for-flooding.service.gov.uk/">GOV.UK Check for flooding</a>, '
+    '<a href="https://flood-warning.naturalresources.wales/">Natural Resources Wales flood warnings</a> or call Floodline on '
     "0345 988 1188. If life is at risk, call 999.",
     extra=steps_html([
         ("Save the places you care about", "Home, the allotment, the fishing spot, the bridge you cycle over. Or just let Afon find what's near you."),
-        ("Afon checks the official data", "River levels and flood warnings come straight from the Environment Agency, which updates most stations every 15 minutes."),
+        ("Afon checks the official data", "River levels and flood warnings come straight from the Environment Agency and Natural Resources Wales, which update most stations every 15 minutes."),
         ("You get the answer, not the numbers", "Is it low, normal, high or rising? Afon says so in plain English, with the readings there if you want them."),
     ]) + audience_html("Made for people who live and play by water.", [
         "Homeowners near rivers", "Anglers", "Kayakers and paddleboarders", "Walkers and dog walkers",
@@ -627,12 +628,12 @@ support_body = f"""  <main class="wrap">
       </div>
 
       <h2>Afon</h2>
-{qa("Where does Afon's data come from?", "River levels and flood warnings come from the Environment Agency's public real-time flood-monitoring service. Afon contains public sector information licensed under the Open Government Licence v3.0. Rain forecasts come from Apple Weather.")}
+{qa("Where does Afon's data come from?", "River levels and flood warnings come from the Environment Agency's public real-time flood-monitoring service and, in Wales, from Natural Resources Wales. Afon contains public sector information licensed under the Open Government Licence v3.0, including Natural Resources Wales information © Natural Resources Wales and Database Right. Rain forecasts come from Apple Weather.")}
 {qa("Is Afon free?", "Yes. Flood warnings, river levels, the map, charts, rain forecasts and two saved rivers are free, and always will be. Afon+, coming soon, is a monthly or yearly subscription for people who want more: alerts at a level you choose, unlimited saved rivers, longer history and widgets. It's shared with your family, and you can cancel at any time.")}
-{qa("Is Afon an official flood warning service?", "No. Afon presents official data, but it can be delayed or unavailable. Always follow official advice. Check GOV.UK Check for flooding, sign up to the Environment Agency's free flood warnings, or call Floodline on 0345 988 1188. If life is at risk, call 999.")}
-{qa("How do flood warning notifications work?", "When you turn them on, Afon works out on your iPhone which Environment Agency flood warning areas are near your places, and sends my server only those area codes and an Apple push code for your iPhone. When the Environment Agency issues, changes or lifts a warning in one of those areas, you get a notification. Your location is never sent. Turn them off at any time in Afon or in iOS Settings.")}
-{qa("Which areas does Afon cover?", "England, using Environment Agency data. Coverage for Wales is planned.")}
-{qa("Why is a reading missing or out of date?", "Monitoring stations sometimes go offline for maintenance or report late. Afon shows the time of each station's last reading, marks it as delayed after 6 hours and offline after 7 days, and greys it out on the map. These are problems at the station, not with Afon, and the Environment Agency is usually already fixing them.")}
+{qa("Is Afon an official flood warning service?", "No. Afon presents official data, but it can be delayed or unavailable. Always follow official advice. Check GOV.UK Check for flooding or Natural Resources Wales's flood warnings, sign up to their free flood warning services, or call Floodline on 0345 988 1188. If life is at risk, call 999.")}
+{qa("How do flood warning notifications work?", "When you turn them on, Afon works out on your iPhone which Environment Agency and Natural Resources Wales flood warning areas are near your places, and sends my server only those area codes and an Apple push code for your iPhone. When the Environment Agency or Natural Resources Wales issues, changes or lifts a warning in one of those areas, you get a notification. Your location is never sent. Turn them off at any time in Afon or in iOS Settings.")}
+{qa("Which areas does Afon cover?", "England and Wales, using data from the Environment Agency and Natural Resources Wales.")}
+{qa("Why is a reading missing or out of date?", "Monitoring stations sometimes go offline for maintenance or report late. Afon shows the time of each station's last reading, marks it as delayed after 6 hours and offline after 7 days, and greys it out on the map. These are problems at the station, not with Afon, and the agency that runs it is usually already fixing them.")}
 {qa("Why does Afon ask for my location?", "So it can show the stations and warnings nearest to you. Your location is only used on your device and is never sent to me: Afon only ever asks my server about specific gauges. You can say no and choose a home place in Settings instead.")}
 
       <h2>Concourse</h2>
@@ -701,8 +702,8 @@ privacy_body = """  <main class="wrap">
       </ul>
 
       <h2>Afon</h2>
-      <p>Afon gets river levels and flood warnings from the Environment Agency's public flood-monitoring service, and rain forecasts from Apple's WeatherKit service. To make this fast and reliable, these requests go through a small server I run (api.southby.app), which collects the data and passes it on.</p>
-      <p>Your iPhone only ever asks my server for information about specific river gauges, or for the full list of gauges and flood warnings for England. It never sends your location, your saved rivers or any identifier from Afon. Working out which gauges and warnings are near you happens on your device. When a rain forecast is needed, my server asks Apple about the area around a gauge, not about you.</p>
+      <p>Afon gets river levels and flood warnings from the Environment Agency's public flood-monitoring service and Natural Resources Wales, and rain forecasts from Apple's WeatherKit service. To make this fast and reliable, these requests go through a small server I run (api.southby.app), which collects the data and passes it on.</p>
+      <p>Your iPhone only ever asks my server for information about specific river gauges, or for the full list of gauges and flood warnings for England and Wales. It never sends your location, your saved rivers or any identifier from Afon. Working out which gauges and warnings are near you happens on your device. When a rain forecast is needed, my server asks Apple about the area around a gauge, not about you. To find the flood warning areas near your places for notifications, your iPhone asks the Environment Agency and, in and near Wales, the Welsh Government's DataMapWales service directly, so that never passes through my server.</p>
       <p>Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days. If my server can't be reached, Afon may contact the Environment Agency's service directly instead, which will also see your IP address; the Environment Agency's own privacy notice applies to its services.</p>
       <p><strong>Flood warning notifications.</strong> If you turn these on, Afon works out on your iPhone which flood warning areas are near your places, then sends my server those area codes and an Apple push code (a "device token") so a notification can reach your iPhone through Apple's push service. Your location and saved places are never sent. The push code doesn't identify you, and I don't link it to anything else. I keep it only to send these notifications; if Afon hasn't been in touch for 60 days it's deleted automatically, and it's removed as soon as you turn notifications off. My lawful basis is your consent, which you can withdraw at any time in Afon or in iOS Settings. Apple delivers the notifications under its own privacy policy.</p>
 
