@@ -222,7 +222,7 @@ def pricing_html():
               <li>Flood warnings, with notifications</li>
               <li>24-hour and 7-day charts</li>
               <li>Rain forecast</li>
-              <li>Two saved rivers and a Home Screen widget</li>
+              <li>Two saved rivers</li>
             </ul>
           </div>
           <div class="card">
@@ -233,7 +233,7 @@ def pricing_html():
               <li>Alerts for more places</li>
               <li>Unlimited saved rivers</li>
               <li>21-day history and detailed rain charts</li>
-              <li>More widgets, including the Lock Screen</li>
+              <li>Home Screen and Lock Screen widgets</li>
               <li>Compare rivers on one chart</li>
               <li>Conditions for swimmers and paddlers</li>
             </ul>
@@ -347,7 +347,7 @@ afon_body = app_page(
         ("rain", "Rain forecast", "How much rain is on the way near you over the next 24 hours, hour by hour, from Apple Weather."),
         ("along", "Along the river", "See the other gauges on the same river, so you know what's coming downstream."),
         ("gaps", "Honest about gaps", "If a gauge stops reporting, Afon says so, with the time of its last reading."),
-        ("widget", "Widget", "See your river at a glance on the Home Screen without opening the app."),
+        ("widget", "Widgets with Afon+", "Your saved rivers at a glance on the Home Screen and Lock Screen, without opening the app."),
     ],
     "Afon has no account, no ads and no tracking. Your location and saved places stay on your device. Flood warning notifications only need the codes of the warning areas near your places, never where you are.",
     "<strong>Afon is not an official warning service.</strong> Always follow official advice. Check "
@@ -362,11 +362,11 @@ afon_body = app_page(
         "Allotment holders", "Farmers", "Wild swimmers", "Anyone who's ever wondered 'is it up?'"]) + roadmap_html(
         ["Flood warnings near you, with notifications", "River levels with 24-hour and 7-day charts", "Plain-English summaries",
          "Full-screen map with warning outlines", "How full each river is", "Rain forecast", "Other gauges on the same river",
-         "Two saved rivers", "Home Screen widget for one river"],
+         "Two saved rivers"],
         ["Wales", "5-day flood risk outlook", "How today compares with the river's history",
          ("Alerts when your river passes a level you choose", "Afon+"), ("Alerts when a river is rising fast", "Afon+"),
          ("Alerts for more places", "Afon+"), ("Unlimited saved rivers", "Afon+"),
-         ("21-day history and detailed rain charts", "Afon+"), ("More widgets, including the Lock Screen", "Afon+"),
+         ("21-day history and detailed rain charts", "Afon+"), ("Home Screen and Lock Screen widgets", "Afon+"),
          ("Compare rivers on one chart", "Afon+"), ("Conditions for swimmers and paddlers", "Afon+"),
          "Siri and Shortcuts", ("Storm overflows and water quality, if the data proves reliable", "Afon+")],
         ["Live Activities while a river is rising", "Apple Watch", "Tides", "Rain gauges", "Rivers beyond the UK, starting with the USA"],
@@ -628,7 +628,7 @@ support_body = f"""  <main class="wrap">
 
       <h2>Afon</h2>
 {qa("Where does Afon's data come from?", "River levels and flood warnings come from the Environment Agency's public real-time flood-monitoring service. Afon contains public sector information licensed under the Open Government Licence v3.0. Rain forecasts come from Apple Weather.")}
-{qa("Is Afon free?", "Yes. Flood warnings, river levels, the map, charts, rain forecasts, two saved rivers and a Home Screen widget are free, and always will be. Afon+, coming soon, is a monthly or yearly subscription for people who want more: alerts at a level you choose, unlimited saved rivers, longer history and more widgets. It's shared with your family, and you can cancel at any time.")}
+{qa("Is Afon free?", "Yes. Flood warnings, river levels, the map, charts, rain forecasts and two saved rivers are free, and always will be. Afon+, coming soon, is a monthly or yearly subscription for people who want more: alerts at a level you choose, unlimited saved rivers, longer history and widgets. It's shared with your family, and you can cancel at any time.")}
 {qa("Is Afon an official flood warning service?", "No. Afon presents official data, but it can be delayed or unavailable. Always follow official advice. Check GOV.UK Check for flooding, sign up to the Environment Agency's free flood warnings, or call Floodline on 0345 988 1188. If life is at risk, call 999.")}
 {qa("How do flood warning notifications work?", "When you turn them on, Afon works out on your iPhone which Environment Agency flood warning areas are near your places, and sends my server only those area codes and an Apple push code for your iPhone. When the Environment Agency issues, changes or lifts a warning in one of those areas, you get a notification. Your location is never sent. Turn them off at any time in Afon or in iOS Settings.")}
 {qa("Which areas does Afon cover?", "England, using Environment Agency data. Coverage for Wales is planned.")}
