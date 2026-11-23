@@ -227,7 +227,7 @@ def pricing_html():
           </div>
           <div class="card">
             <h3>Afon+ <span class="plus">Coming soon</span></h3>
-            <p class="small">One-off purchase. No subscription. Shared with your family.</p>
+            <p class="small">Monthly or yearly subscription. Shared with your family.</p>
             <ul>
               <li>Alerts when your river passes a level you choose, or rises fast</li>
               <li>Alerts for more places</li>
@@ -628,7 +628,7 @@ support_body = f"""  <main class="wrap">
 
       <h2>Afon</h2>
 {qa("Where does Afon's data come from?", "River levels and flood warnings come from the Environment Agency's public real-time flood-monitoring service. Afon contains public sector information licensed under the Open Government Licence v3.0. Rain forecasts come from Apple Weather.")}
-{qa("Is Afon free?", "Yes. Flood warnings, river levels, the map, charts, rain forecasts, two saved rivers and a Home Screen widget are free, and always will be. Afon+, coming soon, is a one-off purchase for people who want more: alerts at a level you choose, unlimited saved rivers, longer history and more widgets. There's no subscription, and it's shared with your family.")}
+{qa("Is Afon free?", "Yes. Flood warnings, river levels, the map, charts, rain forecasts, two saved rivers and a Home Screen widget are free, and always will be. Afon+, coming soon, is a monthly or yearly subscription for people who want more: alerts at a level you choose, unlimited saved rivers, longer history and more widgets. It's shared with your family, and you can cancel at any time.")}
 {qa("Is Afon an official flood warning service?", "No. Afon presents official data, but it can be delayed or unavailable. Always follow official advice. Check GOV.UK Check for flooding, sign up to the Environment Agency's free flood warnings, or call Floodline on 0345 988 1188. If life is at risk, call 999.")}
 {qa("How do flood warning notifications work?", "When you turn them on, Afon works out on your iPhone which Environment Agency flood warning areas are near your places, and sends my server only those area codes and an Apple push code for your iPhone. When the Environment Agency issues, changes or lifts a warning in one of those areas, you get a notification. Your location is never sent. Turn them off at any time in Afon or in iOS Settings.")}
 {qa("Which areas does Afon cover?", "England, using Environment Agency data. Coverage for Wales is planned.")}
