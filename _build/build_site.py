@@ -77,10 +77,10 @@ def page(path, title, description, body, extra_footer="", app=None):
 #   testflight:     version in TestFlight, e.g. "2.0.1" (and testflight_url, the public link if there is
 #                   one; without it, "Request access" emails support)
 RELEASES = {
-    "afon":      {"store": None, "store_url": None, "testflight": "1.1.1", "testflight_url": None},
-    "concourse": {"store": None, "store_url": None, "testflight": "1.0.0", "testflight_url": None},
-    "settee":    {"store": None, "store_url": None, "testflight": "1.2.0", "testflight_url": None},
-    "lineside":  {"store": None, "store_url": None, "testflight": "1.1.0", "testflight_url": None},
+    "afon":      {"store": None, "store_url": None, "testflight": "1.8.5", "testflight_url": None},
+    "concourse": {"store": None, "store_url": None, "testflight": "1.1.2", "testflight_url": None},
+    "settee":    {"store": None, "store_url": None, "testflight": "1.2.2", "testflight_url": None},
+    "lineside":  {"store": None, "store_url": None, "testflight": "1.1.1", "testflight_url": None},
     "kerbside":  {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
     "interchange": {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
 }
