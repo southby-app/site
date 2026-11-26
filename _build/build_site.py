@@ -4,7 +4,7 @@ import feature_icons
 
 # The repository root (this script lives in _build/). Run: python3 _build/build_site.py
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VERSION = 15  # bump whenever style.css or icons change, so browsers fetch the new files
+VERSION = 16  # bump whenever style.css or icons change, so browsers fetch the new files
 TAGLINE = "Made in Swindon, fuelled by tea · © 2026 Michael Southby"
 ICON_CREDIT = 'Feature icons based on <a href="https://lucide.dev">Lucide</a> (ISC licence). '
 

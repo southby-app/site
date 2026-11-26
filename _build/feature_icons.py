@@ -101,8 +101,8 @@ GLYPHS = {
 }
 
 APPS = {"afon": ("#2aa7ff", "#0057d9"), "concourse": ("#ffc94d", "#f08c00"), "settee": ("#ff8a65", "#d63a2f"),
-        "lineside": ("#6d5dfc", "#2a1d73"), "kerbside": ("#3ddc84", "#0a7a45"),
-        "interchange": ("#ffc94d", "#f08c00"), "studio": ("#2aa7ff", "#0057d9")}
+        "lineside": ("#6d5dfc", "#2a1d73"), "kerbside": ("#d9875a", "#7a3416"),
+        "interchange": ("#c0466a", "#5c0f27"), "studio": ("#2aa7ff", "#0057d9")}
 
 # The two layers, in a 100 x 100 tile. Behind: 4.2 times size, offset to the bottom right, 28% white.
 # In front: 2.5 times size (60 of 100), centred, solid white.
