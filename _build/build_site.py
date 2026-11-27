@@ -672,10 +672,10 @@ page("support/index.html", "Support — southby.app",
 privacy_body = """  <main class="wrap">
     <article class="prose">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: 19 November 2026</p>
+      <p class="updated">Last updated: 27 November 2026</p>
 
       <div class="callout">
-        <p><strong>In short:</strong> My apps don't have accounts, adverts, analytics or tracking. I don't collect, sell or share your personal data. Anything an app needs, such as your location, saved places or Kodi address, stays on your device. The one exception is Afon's flood warning notifications, which need an Apple push code and the warning areas you want to hear about, never your location. The only personal data I receive is what you choose to send me by email.</p>
+        <p><strong>In short:</strong> My apps don't have accounts, adverts, analytics or tracking. I don't collect, sell or share your personal data. Anything an app needs, such as your location, saved places or Kodi address, stays on your device. The exceptions are notifications you choose to turn on (Afon's flood warnings, Concourse's tracked and followed trains, and Lineside's spot alerts): these need an Apple push code and what the notification is about, never your location. If you follow a train in Concourse you can add a first name for its notifications; it's deleted soon after the train arrives. Otherwise, the only personal data I receive is what you choose to send me by email.</p>
       </div>
 
       <h2>Who I am</h2>
@@ -710,6 +710,8 @@ privacy_body = """  <main class="wrap">
       <h2>Concourse</h2>
       <p>To show live train times, Concourse requests information about the stations and services you look at from National Rail's data services. These requests may pass through a small server I run, which forwards them and returns the results. The request contains only the station or service you asked about, never your location or any identifier from Concourse. Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days.</p>
       <p><strong>Tracking a train.</strong> If you choose "Track This Train", Concourse shows the train on your Lock Screen and in the Dynamic Island (a Live Activity). To keep it up to date, Concourse sends my server the train's National Rail service code, your two station codes and an Apple push code for that one Live Activity, so updates can reach your iPhone through Apple's push service. Your location is never sent, and the push code doesn't identify you. I keep these only while the train is being tracked: they're deleted when the train arrives, if it's cancelled, when you stop tracking, or after 8 hours at most. Apple delivers the updates under its own privacy policy.</p>
+      <p><strong>Following and meeting a train.</strong> If you follow a train (perhaps one someone else is catching) or meet someone off one, Concourse sends my server that train's details (the day, the two station codes, its timetabled times and, once it's running, its National Rail service code), an Apple push code (a "device token") so notifications can reach your iPhone through Apple's push service, and, only if you type one, a first name to use in the notifications. Your location is never sent. I keep these only to send the notifications: they're deleted a couple of hours after the train arrives or is cancelled, when you stop following it, and in any case within a day of the train being due. My lawful basis is your consent, which you can withdraw at any time by stopping following the train or in iOS Settings. Apple delivers the notifications under its own privacy policy.</p>
+      <p><strong>Sharing a train.</strong> "Share So Others Can Follow" creates a link containing only the train's details (the day, station codes, timetabled times and, on the day, its service code). It contains no name or location. Opening it shows a page on this website, or opens Concourse if it's installed.
 
       <h2>Lineside</h2>
       <p>Lineside gets railtours and other specials from a small server I run (api.southby.app), which reads Network Rail's open timetable and live running data. Your iPhone asks it for the trains of the types you've chosen on a given day, the trains past the stations you've saved as spots, and anything you search for. These requests contain only those choices, station codes and search words, never your location or any identifier from Lineside. Working out which station on each route is nearest you happens on your device. If Freight is switched on in Settings, Today also sends the codes of the stations within your chosen "near you" distance, so it can show freight trains near you. That list narrows down roughly where you are, though not your exact position; turn Freight off if you'd rather it wasn't sent. Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days.</p>
@@ -747,6 +749,38 @@ privacy_body = """  <main class="wrap">
   </main>"""
 page("privacy/index.html", "Privacy Policy — southby.app",
      "How southby.app's apps, Afon, Concourse, Settee and Lineside, handle your personal data.", privacy_body)
+
+# ---------------------------------------------------------------- Concourse: a shared train
+# "Share So Others Can Follow" links (https://southby.app/concourse/follow/?d=…&f=…) open Concourse where
+# it's installed (a universal link, see the apple-app-site-association file below) and this page otherwise.
+page("concourse/follow/index.html", "Follow a train — Concourse",
+     "Someone has shared a train with you. Open the link on an iPhone with Concourse to follow it.",
+     """  <main>
+    <div class="wrap hero">
+      <span class="icon lg" aria-hidden="true"><img src="/assets/icons/concourse.svg?v=""" + str(VERSION) + """" alt="" width="120" height="120"></span>
+      <h1>Follow this train.</h1>
+      <p>Someone has shared a train with you. Open this link on an iPhone with Concourse and you'll get a notification for its platform, any delay, when it leaves and when it arrives.</p>
+      <a class="btn" href="/concourse/">About Concourse</a>
+    </div>
+  </main>""", app="concourse")
+
+# Universal links: lets "Share So Others Can Follow" links open the Concourse app. GitHub Pages only
+# publishes the hidden .well-known folder because _config.yml includes it.
+os.makedirs(os.path.join(ROOT, ".well-known"), exist_ok=True)
+with open(os.path.join(ROOT, ".well-known", "apple-app-site-association"), "w") as f:
+    f.write("""{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["L9U83YL7ZP.app.southby.concourse"],
+        "components": [{ "/": "/concourse/follow/*", "comment": "Share So Others Can Follow" }]
+      }
+    ]
+  }
+}
+""")
+with open(os.path.join(ROOT, "_config.yml"), "w") as f:
+    f.write('# GitHub Pages: publish the .well-known folder (universal links). Written by _build/build_site.py.\ninclude: [".well-known"]\n')
 
 # ---------------------------------------------------------------- 404
 page("404.html", "Page not found — southby.app", "Page not found.",

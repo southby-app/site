@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["L9U83YL7ZP.app.southby.concourse"],
+        "components": [{ "/": "/concourse/follow/*", "comment": "Share So Others Can Follow" }]
+      }
+    ]
+  }
+}
