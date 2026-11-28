@@ -597,18 +597,19 @@ glovebox_body = app_page(
         ("saved", "Your own dates", "Insurance, servicing and anything else, each with its own reminders. Add any date to Calendar."),
         ("share", "Share its history", "A one-page PDF of the vehicle's MOT history, ready to share when you sell."),
         ("search", "Look up any vehicle", "Enter any registration to see its MOT, tax and recalls."),
+        ("fuel", "Fuel prices near you", "Live prices within 10 miles for your vehicle's fuel, cheapest first, from the government's Fuel Finder scheme, each with when it last changed. Only a rough area is sent, never where you are."),
         ("buying", "Buying Check", "With Glovebox+, the things a buyer would want to know about a vehicle you look up, straight from the DVSA and DVLA. Nothing guessed or scored."),
         ("advisory", "Watch out for", "With Glovebox+, advisories that keep coming back MOT after MOT."),
         ("honest", "Honest information", "Exactly what the DVSA and DVLA record. If something isn't in their records, Glovebox says so."),
     ],
-    "Glovebox has no account, no ads and no tracking. Your vehicles and dates stay on your iPhone, and only a registration is ever sent, to look it up.",
+    "Glovebox has no account, no ads and no tracking. Your vehicles and dates stay on your iPhone. Only a registration is sent, to look it up, and for fuel prices only a rough area about 12 miles across, never where you are.",
     "<strong>Coming soon.</strong> Glovebox is being tested now. Two vehicles are free; Glovebox+ adds as many as you like, Buying Check, Watch Out For and your choice of reminder times. "
     "Email <a href=\"mailto:support@southby.app?subject=Glovebox\">support@southby.app</a> if you'd like to hear when it's ready to try. "
     "Glovebox is an independent app and isn't affiliated with the DVSA or DVLA.",
 )
 page("glovebox/index.html", "Glovebox — MOT, tax and recalls for your vehicles",
      "Glovebox: MOT, tax and recalls for your cars, vans and motorbikes, with reminders before anything runs out. Coming soon from southby.app.",
-     glovebox_body, "Contains public sector information from the DVSA and DVLA, licensed under the Open Government Licence v3.0. Glovebox is not affiliated with the DVSA or DVLA. ",
+     glovebox_body, "Contains public sector information from the DVSA and DVLA, licensed under the Open Government Licence v3.0. Fuel prices from the UK Government's Fuel Finder scheme. Glovebox is not affiliated with the DVSA, the DVLA or Fuel Finder. ",
      app="glovebox")
 
 # ---------------------------------------------------------------- About
@@ -705,6 +706,7 @@ support_body = f"""  <main class="wrap">
 {qa("Which vehicles does Glovebox cover?", "Vehicles registered in Great Britain (England, Scotland and Wales). Vehicles registered in Northern Ireland have their MOT records kept separately, so Glovebox can't show them.")}
 {qa("Is Glovebox free?", "Yes, for two vehicles, with their MOT, tax, recalls, history and reminders. Glovebox+, a monthly or yearly subscription, adds as many vehicles as you like, Buying Check for any vehicle you look up, Watch Out For, and your choice of when reminders arrive.")}
 {qa("Why is a date or detail missing?", "Glovebox shows exactly what the DVSA and DVLA hold. New vehicles have no MOT until they're three years old, and some older records are incomplete. If something looks wrong, check it on GOV.UK.")}
+{qa("Where do the fuel prices come from?", "From the UK Government's Fuel Finder scheme: by law, forecourts must report a price change within 30 minutes. Each price in Glovebox shows when the forecourt last changed it, and prices that haven't changed for over a week are marked. A few prices that can't be right (sent in pounds rather than pence, say) are left out rather than guessed at. Prices can still differ at the pump, so check before you fill up.")}
 {qa("Is Glovebox a substitute for checking on GOV.UK?", "No. It shows the official records, but they can be delayed. If it matters, for example before you drive or buy, check GOV.UK's own MOT and vehicle tax services.")}
 
       <h2>All apps</h2>
@@ -771,6 +773,7 @@ privacy_body = """  <main class="wrap">
 
       <h2>Glovebox</h2>
       <p>Glovebox gets MOT history and recalls from the DVSA and vehicle tax from the DVLA through a small server I run (api.southby.app). To look a vehicle up, your iPhone sends my server only its registration: never your location, your other vehicles or any identifier from Glovebox. The registration is sent in the body of the request, so it doesn't appear in web server logs, and my server never logs it. To avoid asking the DVSA and DVLA again for the same vehicle, my server keeps each answer in memory for up to six hours, then forgets it; it's never written to disk. To stop the service being used to work through the DVSA's and DVLA's records, it limits how many new lookups one address can make in an hour, keeping addresses only as a one-way hash, only in memory and only for an hour.</p>
+      <p><strong>Fuel prices.</strong> If you use the Fuel tab and allow location, your iPhone works out a grid square about 12 miles (20 km) across that you're in, and sends my server only that square's number, never your location. My server answers with the forecourts in that square and the squares around it, and your iPhone works out which are nearest. The square isn't stored or logged by me, and Glovebox doesn't track where you go. My server gets the prices from the UK Government's Fuel Finder service; nothing about you is sent to it. You can say no to location and use the rest of Glovebox as before.</p>
       <p>Your vehicles, your own dates and your reminders are kept on your iPhone. MOT and tax reminders are worked out and scheduled on your device, with no server involved. Adding a date to Calendar uses Apple's own screen, so Glovebox never has access to your calendars. A shared MOT history PDF is made on your iPhone and goes only where you send it.</p>
       <p>Glovebox+ is a subscription handled by Apple through the App Store. Glovebox checks it on your iPhone; nothing about your subscription is sent to me.</p>
 
