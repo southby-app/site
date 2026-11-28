@@ -96,13 +96,26 @@ GLYPHS = {
     'stepfree': '<circle cx="16" cy="4" r="1" /> <path d="m18 19 1-7-6 1" /> <path d="m5 8 3-3 5.5 3-2.36 3.5" /> <path d="M4.24 14.5a5 5 0 0 0 6.88 6" /> <path d="M13.76 17.5a5 5 0 0 0-6.88-6" />',
     # train-front-tunnel
     'tube': '<path d="M2 22V12a10 10 0 1 1 20 0v10" /> <path d="M15 6.8v1.4a3 2.8 0 1 1-6 0V6.8" /> <path d="M10 15h.01" /> <path d="M14 15h.01" /> <path d="M10 19a4 4 0 0 1-4-4v-3a6 6 0 1 1 12 0v3a4 4 0 0 1-4 4Z" /> <path d="m9 19-2 3" /> <path d="m15 19 2 3" />',
+    # car-front
+    'car': '<path d="m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8" /> <path d="M7 14h.01" /> <path d="M17 14h.01" /> <rect width="18" height="8" x="3" y="10" rx="2" /> <path d="M5 18v2" /> <path d="M19 18v2" />',
+    # calendar-check
+    'dates': '<path d="M8 2v4" /> <path d="M16 2v4" /> <rect width="18" height="18" x="3" y="4" rx="2" /> <path d="M3 10h18" /> <path d="m9 16 2 2 4-4" />',
+    # file-text
+    'history': '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /> <path d="M14 2v4a2 2 0 0 0 2 2h4" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" />',
+    # clipboard-check
+    'buying': '<rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="m9 14 2 2 4-4" />',
+    # wrench
+    'advisory': '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />',
+    # share
+    'share': '<path d="M12 2v13" /> <path d="m16 6-4-4-4 4" /> <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />',
     # mail
     'mail': '<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" />',
 }
 
 APPS = {"afon": ("#2aa7ff", "#0057d9"), "concourse": ("#ffc94d", "#f08c00"), "settee": ("#ff8a65", "#d63a2f"),
         "lineside": ("#6d5dfc", "#2a1d73"), "kerbside": ("#d9875a", "#7a3416"),
-        "interchange": ("#c0466a", "#5c0f27"), "studio": ("#2aa7ff", "#0057d9")}
+        "interchange": ("#c0466a", "#5c0f27"), "glovebox": ("#2e8aa3", "#0b3644"),
+        "studio": ("#2aa7ff", "#0057d9")}
 
 # The two layers, in a 100 x 100 tile. Behind: 4.2 times size, offset to the bottom right, 28% white.
 # In front: 2.5 times size (60 of 100), centred, solid white.

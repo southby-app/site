@@ -45,6 +45,7 @@ def page(path, title, description, body, extra_footer="", app=None):
         <li><a href="/lineside/">Lineside</a></li>
         <li class="soon"><a href="/kerbside/">Kerbside</a></li>
         <li class="soon"><a href="/interchange/">Interchange</a></li>
+        <li class="soon"><a href="/glovebox/">Glovebox</a></li>
         <li><a href="/support/">Support</a></li>
       </ul>
     </div>
@@ -83,9 +84,10 @@ RELEASES = {
     "lineside":  {"store": None, "store_url": None, "testflight": "1.1.1", "testflight_url": None},
     "kerbside":  {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
     "interchange": {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
+    "glovebox":  {"store": None, "store_url": None, "testflight": None, "testflight_url": None},
 }
 
-APP_NAMES = {"afon": "Afon", "concourse": "Concourse", "settee": "Settee", "lineside": "Lineside", "kerbside": "Kerbside", "interchange": "Interchange"}
+APP_NAMES = {"afon": "Afon", "concourse": "Concourse", "settee": "Settee", "lineside": "Lineside", "kerbside": "Kerbside", "interchange": "Interchange", "glovebox": "Glovebox"}
 
 
 def release_badge(app):
@@ -312,6 +314,7 @@ home_body = f"""  <main>
 {app_card("lineside", "Lineside", "Railtours, light engines and railway specials, live. Know what's running today and when it's coming past.")}
 {app_card("kerbside", "Kerbside", "Bus times with where your bus really is. Starting in Swindon, then the rest of England.")}
 {app_card("interchange", "Interchange", "London's Tube, trains and buses, live, with step-free first. Concourse's companion for London.")}
+{app_card("glovebox", "Glovebox", "MOT, tax and recalls for your vehicles, with reminders before anything runs out.")}
         </div>
       </div>
     </section>
@@ -578,6 +581,36 @@ page("interchange/index.html", "Interchange — London, live, with step-free fir
      interchange_body, "Powered by TfL Open Data. Contains OS data © Crown copyright and database rights. Interchange is not affiliated with Transport for London. ",
      app="interchange")
 
+# ---------------------------------------------------------------- Glovebox (in development)
+glovebox_body = app_page(
+    "glovebox", "Glovebox",
+    "MOT, tax and recalls for your vehicles.",
+    "Never miss an MOT or tax date.",
+    "Glovebox uses the official records for vehicles in Great Britain: MOT history and safety recalls from the DVSA, and vehicle tax from the DVLA. Add your car, van or motorbike by its registration and everything you need is in one place.",
+    [
+        ("car", "Your garage", "Each vehicle with its number plate, MOT and tax at a glance, and the days left on each."),
+        ("dates", "MOT and tax dates", "When the MOT and tax run out, with the MOT shown as a gauge running down over its year."),
+        ("bell", "Reminders", "A month, two weeks and a day before the MOT or tax is due, worked out on your iPhone."),
+        ("history", "MOT history", "Every MOT with its result, mileage and advisories, with the tester's notes in plainer English."),
+        ("full", "Mileage", "The mileage at each MOT on a chart, with a clear flag if it ever went down."),
+        ("warning", "Recalls", "Any open safety recall the DVSA has for the vehicle, so you know if it needs fixing."),
+        ("saved", "Your own dates", "Insurance, servicing and anything else, each with its own reminders. Add any date to Calendar."),
+        ("share", "Share its history", "A one-page PDF of the vehicle's MOT history, ready to share when you sell."),
+        ("search", "Look up any vehicle", "Enter any registration to see its MOT, tax and recalls."),
+        ("buying", "Buying Check", "With Glovebox+, the things a buyer would want to know about a vehicle you look up, straight from the DVSA and DVLA. Nothing guessed or scored."),
+        ("advisory", "Watch out for", "With Glovebox+, advisories that keep coming back MOT after MOT."),
+        ("honest", "Honest information", "Exactly what the DVSA and DVLA record. If something isn't in their records, Glovebox says so."),
+    ],
+    "Glovebox has no account, no ads and no tracking. Your vehicles and dates stay on your iPhone, and only a registration is ever sent, to look it up.",
+    "<strong>Coming soon.</strong> Glovebox is being tested now. Two vehicles are free; Glovebox+ adds as many as you like, Buying Check, Watch Out For and your choice of reminder times. "
+    "Email <a href=\"mailto:support@southby.app?subject=Glovebox\">support@southby.app</a> if you'd like to hear when it's ready to try. "
+    "Glovebox is an independent app and isn't affiliated with the DVSA or DVLA.",
+)
+page("glovebox/index.html", "Glovebox — MOT, tax and recalls for your vehicles",
+     "Glovebox: MOT, tax and recalls for your cars, vans and motorbikes, with reminders before anything runs out. Coming soon from southby.app.",
+     glovebox_body, "Contains public sector information from the DVSA and DVLA, licensed under the Open Government Licence v3.0. Glovebox is not affiliated with the DVSA or DVLA. ",
+     app="glovebox")
+
 # ---------------------------------------------------------------- About
 about_body = """  <main class="wrap">
     <article class="prose">
@@ -630,7 +663,7 @@ def qa(q, a):
 support_body = f"""  <main class="wrap">
     <article class="prose">
       <h1>Support</h1>
-      <p class="updated">Here to help with Afon, Concourse, Settee and Lineside.</p>
+      <p class="updated">Here to help with Afon, Concourse, Settee, Lineside and Glovebox.</p>
 
       <div class="callout">
         <p><strong>Email:</strong> <a href="mailto:support@southby.app">support@southby.app</a><br>
@@ -667,6 +700,13 @@ support_body = f"""  <main class="wrap">
 {qa("How does Lineside know which station is nearest me?", "Your iPhone works it out from each train's route. Your location is never sent to me. You can say no to location and still see every train.")}
 {qa("Where can I watch from?", "Stations, public footpaths and bridges. Never go onto the railway or trespass on railway land, and follow any instructions from railway staff.")}
 
+      <h2>Glovebox</h2>
+{qa("Where does Glovebox's information come from?", "MOT history and safety recalls come from the DVSA (Driver and Vehicle Standards Agency), and tax from the DVLA (Driver and Vehicle Licensing Agency). Glovebox contains public sector information licensed under the Open Government Licence v3.0. It isn't affiliated with either agency.")}
+{qa("Which vehicles does Glovebox cover?", "Vehicles registered in Great Britain (England, Scotland and Wales). Vehicles registered in Northern Ireland have their MOT records kept separately, so Glovebox can't show them.")}
+{qa("Is Glovebox free?", "Yes, for two vehicles, with their MOT, tax, recalls, history and reminders. Glovebox+, a monthly or yearly subscription, adds as many vehicles as you like, Buying Check for any vehicle you look up, Watch Out For, and your choice of when reminders arrive.")}
+{qa("Why is a date or detail missing?", "Glovebox shows exactly what the DVSA and DVLA hold. New vehicles have no MOT until they're three years old, and some older records are incomplete. If something looks wrong, check it on GOV.UK.")}
+{qa("Is Glovebox a substitute for checking on GOV.UK?", "No. It shows the official records, but they can be delayed. If it matters, for example before you drive or buy, check GOV.UK's own MOT and vehicle tax services.")}
+
       <h2>All apps</h2>
 {qa("Do I need an account?", "No. None of my apps have accounts. Your settings and saved items are stored on your device.")}
 {qa("How do I request a refund?", 'App Store purchases are handled by Apple. Request a refund at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.')}
@@ -676,16 +716,16 @@ support_body = f"""  <main class="wrap">
     </article>
   </main>"""
 page("support/index.html", "Support — southby.app",
-     "Get help with Afon, Concourse, Settee and Lineside.", support_body)
+     "Get help with Afon, Concourse, Settee, Lineside and Glovebox.", support_body)
 
 # ---------------------------------------------------------------- Privacy
 privacy_body = """  <main class="wrap">
     <article class="prose">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: 27 November 2026</p>
+      <p class="updated">Last updated: 28 November 2026</p>
 
       <div class="callout">
-        <p><strong>In short:</strong> My apps don't have accounts, adverts, analytics or tracking. I don't collect, sell or share your personal data. Anything an app needs, such as your location, saved places or Kodi address, stays on your device. The exceptions are notifications you choose to turn on (Afon's flood warnings, Concourse's tracked and followed trains, and Lineside's spot alerts): these need an Apple push code and what the notification is about, never your location. If you follow a train in Concourse you can add a first name for its notifications; it's deleted soon after the train arrives. Otherwise, the only personal data I receive is what you choose to send me by email.</p>
+        <p><strong>In short:</strong> My apps don't have accounts, adverts, analytics or tracking. I don't collect, sell or share your personal data. Anything an app needs, such as your location, saved places or Kodi address, stays on your device. The exceptions are notifications you choose to turn on (Afon's flood warnings, Concourse's tracked and followed trains, and Lineside's spot alerts): these need an Apple push code and what the notification is about, never your location. If you follow a train in Concourse you can add a first name for its notifications; it's deleted soon after the train arrives. Glovebox sends my server the registration of a vehicle you add or look up, and nothing else. Otherwise, the only personal data I receive is what you choose to send me by email.</p>
       </div>
 
       <h2>Who I am</h2>
@@ -698,6 +738,7 @@ privacy_body = """  <main class="wrap">
         <li>Concourse for iPhone</li>
         <li>Settee for iPhone</li>
         <li>Lineside for iPhone</li>
+        <li>Glovebox for iPhone</li>
         <li>Any other app published by southby.app that links to this policy</li>
         <li>This website, southby.app</li>
       </ul>
@@ -727,6 +768,11 @@ privacy_body = """  <main class="wrap">
       <p>Lineside gets railtours and other specials from a small server I run (api.southby.app), which reads Network Rail's open timetable and live running data. Your iPhone asks it for the trains of the types you've chosen on a given day, the trains past the stations you've saved as spots, and anything you search for. These requests contain only those choices, station codes and search words, never your location or any identifier from Lineside. Working out which station on each route is nearest you happens on your device. If Freight is switched on in Settings, Today also sends the codes of the stations within your chosen "near you" distance, so it can show freight trains near you. That list narrows down roughly where you are, though not your exact position; turn Freight off if you'd rather it wasn't sent. Like any web server, mine sees your device's IP address. I don't link it to you or use it for anything except keeping the service secure and working, and server logs are deleted within 14 days.</p>
       <p><strong>Weather.</strong> Lineside shows Apple Weather's forecast for a station at the time a train is due. To get it, your iPhone sends Apple the position of that station (never your own position) through Apple's WeatherKit service, which handles it under Apple's own privacy policy. Nothing about this comes to me.</p>
       <p><strong>Spot alerts.</strong> If you turn these on, Lineside sends my server your spots' station codes, the train types you've chosen, how much warning you want and an Apple push code (a "device token"), so a notification can reach your iPhone through Apple's push service. Your location is never sent, and the push code doesn't identify you. I keep these only to send the alerts; they're deleted as soon as you turn alerts off, and automatically if Lineside hasn't been in touch for 60 days. My lawful basis is your consent, which you can withdraw at any time in Lineside or in iOS Settings. Apple delivers the notifications under its own privacy policy.</p>
+
+      <h2>Glovebox</h2>
+      <p>Glovebox gets MOT history and recalls from the DVSA and vehicle tax from the DVLA through a small server I run (api.southby.app). To look a vehicle up, your iPhone sends my server only its registration: never your location, your other vehicles or any identifier from Glovebox. The registration is sent in the body of the request, so it doesn't appear in web server logs, and my server never logs it. To avoid asking the DVSA and DVLA again for the same vehicle, my server keeps each answer in memory for up to six hours, then forgets it; it's never written to disk. To stop the service being used to work through the DVSA's and DVLA's records, it limits how many new lookups one address can make in an hour, keeping addresses only as a one-way hash, only in memory and only for an hour.</p>
+      <p>Your vehicles, your own dates and your reminders are kept on your iPhone. MOT and tax reminders are worked out and scheduled on your device, with no server involved. Adding a date to Calendar uses Apple's own screen, so Glovebox never has access to your calendars. A shared MOT history PDF is made on your iPhone and goes only where you send it.</p>
+      <p>Glovebox+ is a subscription handled by Apple through the App Store. Glovebox checks it on your iPhone; nothing about your subscription is sent to me.</p>
 
       <h2>Settee</h2>
       <p>Settee communicates only with Kodi on your own local network. It needs iOS's Local Network permission to find and control Kodi, and it doesn't contact any other device or service. The address of your Kodi, and any username and password you enter for it, are stored on your device, with the password kept in the iOS Keychain. Nothing about your library, what you watch or your network is sent to me.</p>
@@ -758,7 +804,7 @@ privacy_body = """  <main class="wrap">
     </article>
   </main>"""
 page("privacy/index.html", "Privacy Policy — southby.app",
-     "How southby.app's apps, Afon, Concourse, Settee and Lineside, handle your personal data.", privacy_body)
+     "How southby.app's apps, Afon, Concourse, Settee, Lineside and Glovebox, handle your personal data.", privacy_body)
 
 # ---------------------------------------------------------------- Concourse: a shared train
 # "Share So Others Can Follow" links (https://southby.app/concourse/follow/?d=…&f=…) open Concourse where
